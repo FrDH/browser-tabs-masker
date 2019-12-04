@@ -7,6 +7,11 @@
 /** HTMLElement for the <head> */
 const $head = document.querySelector('head');
 
+//  TODO: random mask.
+//  TODO: choose a selection of masks.
+/** The selected mask */
+const mask = 'google';
+
 /** Array of available masks */
 const masks = {
     //  Misc
@@ -78,9 +83,6 @@ const masks = {
         favicon: '//stackoverflow.com/favicon.ico'
     }
 };
-
-/** The selected mask */
-const mask = 'google';
 
 /** Factory for masking and unmasking the <title> */
 const title = (() => {
@@ -159,13 +161,13 @@ body.${classname} {
     };
 })();
 
-//  On blur: Replace original title and icon[href] with masked ones.
+//  On blur: Mask the page.
 window.addEventListener('blur', () => {
     title.mask();
     favicon.mask();
     html.mask();
 
-    //  TODO: eerst checken welke niet gemute zijn en die onFocus weer unmuten?
+    //  Mute all audio and video(?)
     Array.prototype.slice
         .call(document.querySelectorAll('audio, video'))
         .forEach(audio => {
@@ -173,7 +175,7 @@ window.addEventListener('blur', () => {
         });
 });
 
-//  On focus: Replace masked title and icon[href] with original ones.
+//  On focus: Unmask the page.
 window.addEventListener('focus', () => {
     title.unmask();
     favicon.unmask();
