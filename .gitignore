@@ -1,0 +1,6 @@
+# Ignore Mac system files.
+._*
+.DS_Store
+
+#Ignore git files
+.gitattributes
