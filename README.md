@@ -1,12 +1,11 @@
-Browser Tabs Masker
+Browser Masker
 ================
 
-Quickly mask your opened tabs when leaving the page.
+Quickly mask your opened window when leaving the page.
+Really handy when your boss or (girl)friend suddenly walks into the room and you are doing something he or she shouldn't see (you know, like when you're buying them a gift).
 
 ### How to use
-1. Pick one of the masks and run the JS in the console (a bookmarklet is on the TODO list).
-2. Open a new tab.
+1. Click the bookmarklet.
+2. Leave the page (for example by opening a new tab).
+3. Return to the page and click the bookmarklet a second time.
 
-### TODO
-- Bookmarklet.
-- Webpage to create a custom bookmarklet.
