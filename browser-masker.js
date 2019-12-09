@@ -29,16 +29,6 @@ class BrowserMasker {
 
         /** Object with mask/unmask function for HTML in the <body> */
         this.html = this._html();
-
-        //  On blur: Mask the page.
-        window.addEventListener('blur', () => {
-            this.mask();
-        });
-
-        //  On focus: Unmask the page.
-        window.addEventListener('focus', () => {
-            this.unmask();
-        });
     }
 
     /** Mask the page */
@@ -115,7 +105,7 @@ class BrowserMasker {
     /** Factory for masking and unmasking HTML in the <body> */
     _html() {
         /** Classname to hide all HTML */
-        const classname = 'browser-tabs-masked';
+        const classname = 'browser-masked';
 
         /** HTMLElement for <style> */
         const $style = document.createElement('style');
@@ -145,86 +135,69 @@ BrowserMasker.masks = {
     //  Misc
     google: {
         title: 'Google',
-        url: 'https://www.google.com',
         favicon: 'https://www.google.com/favicon.ico'
     },
     yahoo: {
         title: 'Yahoo',
-        url: 'https://yahoo.com',
         favicon: 'https://s.yimg.com/rz/l/favicon.ico'
     },
     apple: {
         title: 'Apple',
-        url: 'https://www.apple.com',
         favicon: 'https://www.apple.com/favicon.ico'
     },
 
     //  Social
     linkedin: {
         title: 'LinkedIn',
-        url: 'https:www.linkedin.com',
         favicon: 'https://www.linkedin.com/favicon.ico'
     },
     facebook: {
         title: 'Facebook',
-        url: 'https://www.facebook.com',
         favicon: 'https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico'
     },
     twitter: {
         title: 'Twitter',
-        url: 'https://www.twitter.com',
         favicon: 'https://abs.twimg.com/favicons/favicon.ico'
     },
     instagram: {
         title: 'Instagram',
-        url: 'https://www.instagram.com',
         favicon: 'https://www.instagram.com/favicon.ico'
     },
 
     //  News
     cnn: {
         title: 'CNN International - Breaking News',
-        url: 'https://edition.cnn.com',
         favicon: 'https://edition.cnn.com/favicon.ico'
     },
     bbc: {
         title: 'BBC - Homepage',
-        url: 'https://www.bbc.com',
         favicon: 'https://www.bbc.com/favicon.ico'
     },
     foxnews: {
         title: 'Fox News - Breaking News',
-        url: 'https://www.foxnews.com',
         favicon:
             'https://static.foxnews.com/static/orion/styles/img/fox-news/favicons/favicon.ico'
     },
     googlenews: {
         title: 'Google News',
-        url: 'https://news.google.com',
         favicon: 'https://ssl.gstatic.com/gnews/logo/google_news_192.png'
     },
 
     //  Development
     github: {
         title: 'GitHub',
-        url: 'https://www.github.com',
         favicon: 'https://github.com/favicon.ico'
     },
     bitbucket: {
         title: 'Bitbucket | The Git solution for professional teams',
-        url: 'https://www.bitbucket.com',
         favicon: 'https://bitbucket.org/favicon.ico'
     },
     mdn: {
         title: 'MDN Web Docs',
-        url: 'https://developer.mozilla.org/en-US/',
         favicon: 'https://developer.mozilla.org/favicon.ico'
     },
     stackoverflow: {
         title: 'Stack Overflow',
-        url: 'https://stackoverflow.com/',
         favicon: 'https://stackoverflow.com/favicon.ico'
     }
 };
-
-window.__browsermasker = new BrowserMasker();

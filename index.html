@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="description" content="Quickly mask your opened browser when leaving the page. Really handy when your mother, boss or (girl)friend suddenly walks into the room and you are doing something they shouldn't see (you know, like when you're buying them a gift)." />
+		<meta name="robots" content=", follow" />
+
+		<title>Browser Masker - mask your browser tabs</title>
+
+		<link rel="shortcut icon" href="https://frebsite.nl/favicon.ico">
+		<link rel="stylesheet" href="modern-css-reset.css">
+		<link rel="stylesheet" href="layout.css">
+
+		<script src="browser-masker.js"></script>
+		<script>
+			const masker = new BrowserMasker();
+			window.addEventListener('blur', () => {
+				// masker.mask();
+			});
+			window.addEventListener('focus', () => {
+				masker.unmask();
+			});
+			window.focus();
+		</script>
+
+	</head>
+	<body>
+		<script>
+			const macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
+			const platform = window.navigator.platform;
+
+			if (macosPlatforms.indexOf(platform) !== -1) {
+				document.body.classList.add('is-macos');
+			}
+		</script>
+		<article class="page">
+            <h1>Browser Masker</h1>
+			<p>Quickly mask your opened browser when leaving the page. Really handy when your mother, boss or (girl)friend suddenly walks into the room and you are doing something they shouldn't see (you know, like when you're buying them a gift).</p>
+			<p>Give it a go, open a new browser tab
+				<span class="winos">(CTRL + T)</span><span class="macos">(CMD + T)</span>
+				and watch the tab (favicon and title) of this page change. Cool huh?</p>
+
+			<hr>
+
+			<div class="row">
+				<div class="col">
+
+					<div class="sticky">
+						<h2>Get your own</h2>
+						<p>Simply drag this button to your bookmarks bar.</p>
+
+						<a id="bookmarklet" class="bookmarklet">Browser Masker bookmarklet</a>
+					</div>
+
+				</div>
+				<div class="col">
+
+					<h2>Customize</h2>
+					<p>Check the websites you want to use for masking your browser
+						<small>(if you don't check any, they'll al be included)</small>.</p>
+
+					<br>
+
+					<template id="website-checkbox">
+						<label class="checkbox">
+							<input type="checkbox" name="{name}">
+							<img src="{icon}" width="16px">
+							{title}
+						</label>
+					</template>
+
+					<script>
+						const $template = document.querySelector('#website-checkbox');
+						const _template = $template.innerHTML;
+						const $result = document.createElement('div');
+						const _result = '';
+
+						Object.keys(BrowserMasker.masks).forEach( key => {
+							$result.innerHTML += _template
+								.split( '{name}' ).join( key )
+								.split( '{title}' ).join( BrowserMasker.masks[ key ].title.split( ' - ' )[ 0 ].split( ' | ' )[ 0 ] )
+								.split( '{icon}' ).join( BrowserMasker.masks[ key ].favicon );
+						});
+
+						$template.after($result);
+						$template.remove();
+
+						//	TODO:
+						// 	Script uitlezen,
+						//	gecheckte maskers opsommen,
+						//	script aan bookmarklet hangen.
+						$result.addEventListener('change', e => {
+							console.log($result.querySelectorAll( ':checked' ));
+						});
+
+					</script>
+
+				</div>
+			</div>
+		</article>
+    </body>
+</html>
