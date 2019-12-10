@@ -17,7 +17,7 @@
 		<script>
 			const masker = new BrowserMasker();
 			window.addEventListener('blur', () => {
-				// masker.mask();
+				masker.mask();
 			});
 			window.addEventListener('focus', () => {
 				masker.unmask();
@@ -51,7 +51,7 @@
 						<h2>Get your own</h2>
 						<p>Simply drag this button to your bookmarks bar.</p>
 
-						<a id="bookmarklet" class="bookmarklet">Browser Masker bookmarklet</a>
+						<a id="bookmarklet" class="bookmarklet">Browser Masker</a>
 					</div>
 
 				</div>
@@ -71,34 +71,9 @@
 						</label>
 					</template>
 
-					<script>
-						const $template = document.querySelector('#website-checkbox');
-						const _template = $template.innerHTML;
-						const $result = document.createElement('div');
-						const _result = '';
-
-						Object.keys(BrowserMasker.masks).forEach( key => {
-							$result.innerHTML += _template
-								.split( '{name}' ).join( key )
-								.split( '{title}' ).join( BrowserMasker.masks[ key ].title.split( ' - ' )[ 0 ].split( ' | ' )[ 0 ] )
-								.split( '{icon}' ).join( BrowserMasker.masks[ key ].favicon );
-						});
-
-						$template.after($result);
-						$template.remove();
-
-						//	TODO:
-						// 	Script uitlezen,
-						//	gecheckte maskers opsommen,
-						//	script aan bookmarklet hangen.
-						$result.addEventListener('change', e => {
-							console.log($result.querySelectorAll( ':checked' ));
-						});
-
-					</script>
-
 				</div>
 			</div>
 		</article>
+		<script src="layout.js"></script>
     </body>
 </html>

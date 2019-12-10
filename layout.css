@@ -130,7 +130,7 @@ small {
 }
 
 .bookmarklet {
-    display: inline-block;
+    display: none;
     padding: 10px 20px;
     margin-top: 20px;
     color: #000;
@@ -139,9 +139,14 @@ small {
     background: #ccc;
     border-radius: 5px;
     text-shadow: none;
+    text-decoration: none;
     transition: transform 0.2s ease;
 }
 
 .bookmarklet:hover {
     transform: scale(1.1);
+}
+
+.has-bookmarklet .bookmarklet {
+    display: inline-block;
 }
